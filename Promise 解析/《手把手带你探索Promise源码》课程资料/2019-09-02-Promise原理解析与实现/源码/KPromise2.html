@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./js/KPromise.js"></script>
+
+    <script>
+
+        
+    
+        // let p1 = new KPromise( (resolve, reject) => {
+        //     console.log('KPromise');
+        //     // resolve('开课吧');
+        //     reject('出错了')
+        // } ).then( val => {
+        //     console.log('val', val);
+        // }, err => {
+        //     console.log('err', err);
+        // } );
+
+
+        // let p1 = new KPromise( (resolve, reject) => {
+        //     console.log('KPromise');
+        //     // resolve('开课吧');
+        //     reject('出错了')
+        // } ).then( val => {
+        //     console.log('val', val);
+        //     return val;
+        // } ).catch(err => {
+        //     console.log('err', err);
+        //     return err;
+        // }).finally(val => {
+        //     console.log('finally', val);
+        // });
+
+
+
+        // KPromise.resolve('kaikeba').then(val => {
+        //     console.log('val', val);
+        // });
+        // KPromise.reject('出错了').then(val => {
+        //     console.log('err', val);
+        // });
+
+
+
+        // KPromise.all([
+        //     Promise.resolve(123),
+        //     Promise.resolve('kaikeba'),
+        //     Promise.reject('kaikeba'),
+        //     new Promise((resolve, reject) => {
+        //         setTimeout(_=> {
+        //             resolve('zMouse')
+        //         }, 1000)
+        //     }),
+        // ]).then(vals => {
+        //     console.log(vals);
+        // }).catch(e => {
+        //     console.log('err', e);
+        // });
+
+        KPromise.allSettled([
+            Promise.resolve(123),
+            Promise.resolve('kaikeba'),
+            Promise.reject('kaikeba'),
+            new Promise((resolve, reject) => {
+                setTimeout(_=> {
+                    resolve('zMouse')
+                }, 1000)
+            }),
+        ]).then(val => {
+            console.log(val);
+        }).catch(e => {
+            console.log('err', e);
+        });
+
+
+    </script>
+</body>
+</html>

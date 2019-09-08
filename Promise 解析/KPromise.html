@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>KPromise</title>
+</head>
+<body>
+  
+  <script src="./Kpromise.js"></script>
+  <script>
+    let k1 = new KPromise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('res1 的值')
+      }, 1000)
+    })
+
+    // 调用then
+    let k2 = k1.then(res => {
+      console.log('成功调1', res)
+      // return '123'
+      return new KPromise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('res2 的值')
+        }, 1000)
+      })
+    }, err => {
+      console.log('失败调1')
+    })
+    k2.then(res => {
+      console.log('成功调2', res)
+    }, err => {
+      console.log('失败调2')
+    })
+
+  </script>
+</body>
+</html>
